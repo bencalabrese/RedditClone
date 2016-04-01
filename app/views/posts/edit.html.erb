@@ -1,0 +1,7 @@
+<% sub = @post.sub %>
+
+<h1>Edit <%= @post.title %></h1>
+
+<%= render "form", post: @post %>
+
+<%= link_to "back to #{sub.title}", sub_url(sub) %>
