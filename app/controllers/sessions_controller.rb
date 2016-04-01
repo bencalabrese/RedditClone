@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_credentials(username, password)
+    @user = User.find_by_credentials(session_params)
 
     if @user
       login_user!(@user)
@@ -17,5 +17,10 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_user!
+  end
+
+  private
+  def session_params
+    params.require(:user).permit(:username,:password)
   end
 end

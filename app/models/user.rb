@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64(16)
   end
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by_username(username)
+  def self.find_by_credentials(opts)
+    user = User.find_by_username(opts[:username])
 
     return nil unless user
-    
-    user.is_password?(password) ? user : nil
+
+    user.is_password?(opts[:password]) ? user : nil
   end
 
   def ensure_session_token

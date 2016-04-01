@@ -1,9 +1,4 @@
-<% action = user.persisted? ? user_url(user.id) : users_url %>
-<% method = user.persisted? ? "patch" : "post" %>
-
 <form action="<%= action %>" method="post">
-  <input type="hidden" name="_method" value="<%= method %>">
-
   <%= render "auth_token" %>
 
   <label>Username
