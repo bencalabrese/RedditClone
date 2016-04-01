@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if @user
       login_user!(@user)
     else
+      @user = User.new(session_params)
       flash[:errors] = ["Invalid credentials"]
       render :new
     end
@@ -21,6 +22,6 @@ class SessionsController < ApplicationController
 
   private
   def session_params
-    params.require(:user).permit(:username,:password)
+    params.require(:user).permit(:username, :password)
   end
 end
