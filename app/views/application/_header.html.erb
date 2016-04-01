@@ -1,7 +1,13 @@
-<% if logged_in?  %>
-  <p>Logged in as: <%= current_user.username %></p>
-  <%= button_to "Logout", session_url, method: :delete %>
-<% else %>
-  <%= link_to "Login", new_session_url %>
-  <%= link_to "Create Account", new_user_url %>
-<% end %>
+<% logo_url = "http://www.workatplay.com/blog/files/styles/fpo_medium/public/article/logo/Reddit%20Small.jpg?itok=dclAuuiP" %>
+
+<img src="<%= logo_url %>" style="float: left">
+
+<div style="float: right"
+  <% if logged_in?  %>
+    <p>Logged in as: <%= current_user.username %></p>
+    <%= button_to "Logout", session_url, method: :delete %>
+  <% else %>
+    <%= link_to "Login", new_session_url %>
+    <%= link_to "Create Account", new_user_url %>
+  <% end %>
+</div>

@@ -1,4 +1,9 @@
 class SubsController < ApplicationController
+  def index
+    @subs = Sub.all
+    render :index
+  end
+
   def new
     @sub = Sub.new
     render :new
@@ -28,13 +33,13 @@ class SubsController < ApplicationController
 
   def update
     @sub = Sub.find(params[:id])
+
     if @sub.update(sub_params)
       redirect_to sub_url(@sub)
     else
       flash[:errors] = @sub.errors.full_messages
       render :edit
     end
-
   end
 
   private
